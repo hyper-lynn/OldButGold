@@ -1,4 +1,4 @@
-1.Keyboard lights trick (.vbs)
+(1)Keyboard lights trick (.vbs)
 
 Set wshShell =wscript.CreateObject("WScript.Shell")
 do
@@ -9,7 +9,7 @@ wshshell.sendkeys "{SCROLLLOCK}"
 loop
 
 
-2.Fake error message (.vbs)
+(2)Fake error message (.vbs)
 
 x=msgbox("Your Message Here", 0+16, "Your Title Here")
 
